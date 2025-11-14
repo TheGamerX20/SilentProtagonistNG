@@ -1,6 +1,7 @@
 # Silent Protagonist NG
 
-Silent Protagonist F4SE's Patch ported to FO4 1.10.984.0.
+Silent Protagonist F4SE's Patch ported to FO4 1.10.984.0+.
+Supports both the Next-Gen and Anniversary Editions of the Game.
 
 ### Requirements
 * [XMake](https://xmake.io) [2.8.2+]

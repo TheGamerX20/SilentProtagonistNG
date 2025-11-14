@@ -6,8 +6,12 @@ includes("lib/commonlibf4")
 
 -- set project
 set_project("SilentProtagonistNG")
-set_version("1.0.0")
 set_license("GPL-3.0")
+
+-- project version
+local version = "1.1.0"
+local major, minor, patch = version:match("^(%d+)%.(%d+)%.(%d+)$")
+set_version(version)
 
 -- set defaults
 set_languages("c++23")
@@ -21,7 +25,7 @@ add_rules("mode.release", "mode.releasedbg", "mode.debug")
 add_rules("plugin.vsxmake.autoupdate")
 
 -- add options
-set_config("rex_ini", true)
+set_config("commonlib_ini", true)
 
 -- targets
 target("SilentProtagonistNG")
@@ -32,7 +36,7 @@ target("SilentProtagonistNG")
     add_rules("commonlibf4.plugin", {
         name = "SilentProtagonistNG",
         author = "TheGamerX20",
-        description = "Silent Protagonist for FO4 NG!"
+        description = "Silent Protagonist for FO4 NG & AE!"
     })
 
     -- add src files
@@ -41,3 +45,10 @@ target("SilentProtagonistNG")
     add_headerfiles("src/**.h")
     add_includedirs("src")
     set_pcxxheader("src/pch.h")
+
+    -- pass major version
+    add_defines(
+        "PLUGIN_VERSION_MAJOR=" .. major,
+        "PLUGIN_VERSION_MINOR=" .. minor,
+        "PLUGIN_VERSION_PATCH=" .. patch
+    )

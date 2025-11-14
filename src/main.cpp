@@ -22,11 +22,13 @@ namespace Main
         // Install Silent Protagonist
         if (iSilentProtagonistPatch.GetValue() == true)
         {
-            SilentProtagonist::Install();
+            if (SilentProtagonist::Install(a_f4se))
+            {
+                REX::INFO("Silent Protagonist NG Initialized!");
+            }
         }
 
         // Finished
-        REX::INFO("Silent Protagonist NG Initialized!");
         return true;
     }
 }
