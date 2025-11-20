@@ -34,15 +34,15 @@ namespace SilentProtagonist
 		REX::INFO(std::string("F4SE Version: ") + F4SEVersion.string());
 
 		// Anniversary or Next-Gen?
-		if (F4SEVersion >= REL::Version(0, 7, 4, 0))
+		if (F4SEVersion >= REL::Version(0, 7, 5, 0))
 		{
-			REX::INFO("Using Anniversary Edition Addresses");
-			qword01Address = REL::Relocation(REL::ID(4798212)).address();
+			REX::INFO("Using Anniversary Edition (1.11.159.0) Addresses");
+			qword01Address = REL::Relocation(REL::ID(4802026)).address();
 		}
-		else
+		else if (F4SEVersion == REL::Version(0, 7, 4, 0))
 		{
-			REX::INFO("Using Next-Gen Edition Addresses");
-			qword01Address = REL::Relocation(REL::ID(2690919)).address();
+			REX::INFO("Using Anniversary Edition (1.11.137.0) Addresses");
+			qword01Address = REL::Relocation(REL::ID(4798212)).address();
 		}
 
 		// Get the Trampoline
