@@ -6,6 +6,7 @@ namespace SilentProtagonist
 	REL::Relocation<uintptr_t> hookSilentGetterRelocation(REL::ID(2229972));
 	REL::Relocation<uintptr_t> hookTimerSet1Relocation(REL::ID(2229974), REL::Offset(0xCAD));
 	REL::Relocation<uintptr_t> hookTimerSet2Relocation(REL::ID(2230178), REL::Offset(0xED));
+	REL::Relocation<uintptr_t> qword01Relocation(REL::ID(4798212));
 	REL::Relocation<uintptr_t> qword02Relocation(REL::ID(981895));
 
 	extern "C"
@@ -14,7 +15,7 @@ namespace SilentProtagonist
 		const char* silentFileLocation = "data\\sound\\voice\\xxx_placeholder_silence.wav";
 
 		// Addresses
-		uintptr_t qword01Address;
+		uintptr_t qword01Address = qword01Relocation.address();
 		uintptr_t qword02Address = qword02Relocation.address();
 
 		// Assembly Hooks
@@ -32,18 +33,6 @@ namespace SilentProtagonist
 
 		// Log F4SE Version
 		REX::INFO(std::string("F4SE Version: ") + F4SEVersion.string());
-
-		// Anniversary or Next-Gen?
-		if (F4SEVersion >= REL::Version(0, 7, 5, 0))
-		{
-			REX::INFO("Using Anniversary Edition (1.11.159.0) Addresses");
-			qword01Address = REL::Relocation(REL::ID(4802026)).address();
-		}
-		else if (F4SEVersion == REL::Version(0, 7, 4, 0))
-		{
-			REX::INFO("Using Anniversary Edition (1.11.137.0) Addresses");
-			qword01Address = REL::Relocation(REL::ID(4798212)).address();
-		}
 
 		// Get the Trampoline
 		auto& trampoline = REL::GetTrampoline();
